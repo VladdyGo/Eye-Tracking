@@ -1,6 +1,4 @@
-Student: 
 Vladislav Goteiner 
-ID: 320489735
 
 
 Steps:
