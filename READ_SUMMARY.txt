@@ -1,0 +1,39 @@
+Student: 
+Vladislav Goteiner 
+ID: 320489735
+
+
+Steps:
+1) loading the video using cv2.
+2) now that we have the video we want to run throught every frame and do the following:
+    a) pre-proccesing the frame by turning it gray-scale and smoothening the image by gaussian blur(cv2) 
+       all this is done so that we will have less unwated noise in the next step of finding the edges of the image
+    b) using Canny edge detection we find the contours of the frame.
+    c) we will be using the edges for the hough Circle transform to extract the circles in the frame (We want to get the eye)
+    d) after we found the circle we draw it on the frame in blue and its center in red.
+    e) each center of each circle of the eye in every frame is saved in a list. so that later we can plot a graph using this data
+       so we could show the position of the eye as a function of time. 
+
+I made 2 graphs: 
+one of them is a 3 dimentional graph that shows the (x,y) coordinates of the eye as a function of time.
+
+and another graph that shows speretly the movment of the eye along the x axis (right,left) and along the y axis (up,down).
+
+The problems: 
+
+the Hough circle transform will return a lot of un-related circles that dont represent the eye.
+and because we only need to get to and focuse on - the center of the eye
+we need to find a way to get rid of all the un-wanted circles.
+
+The solution:
+the solution I have used is - since we know where the eye is located in the frame (what range of pixels) we can simply put an -if-  
+that will check if the circle that was found is too far from where the eye is. 
+if so than we wont use it otherwise it might be the circle we are looking for.
+
+it works pretty well and as you can see during the run the eye and its center is captured pretty well with the exaptions of when the eye goes
+far to the left or far to the right.
+
+
+ 
+
+
